@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Management</title>
+    <script src="https://unpkg.com/axios@1.6.7/dist/axios.min.js"></script>
+    <link rel="stylesheet" href="static/styles.css">
+    <link rel="icon" type="image" href="data:image/png;base64,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">
+ֿ</head>
+
+<body>
+
+    <h1>Car Management</h1>
+
+    <h2>Add Car</h2>
+    <label for="colorInput">Please enter the color of the car:</label>
+    <input type="text" id="colorInput"><br>
+    <label for="modelInput">Please enter the model of the car:</label>
+    <input type="text" id="modelInput"><br>
+    <label for="brandInput">Please enter the brand of the car:</label>
+    <input type="text" id="brandInput"><br>
+    <button id="submitButton">Submit</button><br><br>
+
+    <h2>Update Car</h2>
+    <label for="updateIdInput">Please enter the rowid of the car to update:</label>
+    <input type="text" id="updateIdInput"><br>
+    <label for="updateColorInput">Please enter the new color of the car:</label>
+    <input type="text" id="updateColorInput"><br>
+    <label for="updateModelInput">Please enter the new model of the car:</label>
+    <input type="text" id="updateModelInput"><br>
+    <label for="updateBrandInput">Please enter the new brand of the car:</label>
+    <input type="text" id="updateBrandInput"><br>
+    <button id="updateButton">Update</button><br><br>
+
+    <h2>Delete Car</h2>
+    <label for="deleteIdInput">Please enter the rowid of the car to delete:</label>
+    <input type="text" id="deleteIdInput"><br>
+    <button id="deleteButton">Delete</button><br><br>
+
+    <h2>Car List</h2>
+    <div id="divOne"></div>
+
+    <script>
+        const fetchCars = () => {
+            axios.get('http://127.0.0.1:5000/get_car')
+                .then(res => {
+                    const cars = res.data;
+                    let carListHTML = '<ul>';
+                    cars.forEach(car => {
+                        carListHTML += `<li>Row ID: ${car.rowid}, Color: ${car.color}, Model: ${car.model}, Brand: ${car.brand}</li>`;
+                    });
+                    carListHTML += '</ul>';
+                    document.getElementById('divOne').innerHTML = carListHTML;
+                })
+                .catch(err => console.error(err));
+        };
+
+        const addCar = () => {
+            const inputColor = document.getElementById('colorInput').value;
+            const inputModel = document.getElementById('modelInput').value;
+            const inputBrand = document.getElementById('brandInput').value;
+
+            axios.post('http://127.0.0.1:5000/add_car', {
+                color: inputColor,
+                model: inputModel,
+                brand: inputBrand
+            })
+                .then(res => {
+                    console.log(res.data);
+                    fetchCars();
+                })
+                .catch(err => console.error(err));
+        };
+
+        const updateCar = () => {
+            const updateId = document.getElementById('updateIdInput').value;
+            const updateColor = document.getElementById('updateColorInput').value;
+            const updateModel = document.getElementById('updateModelInput').value;
+            const updateBrand = document.getElementById('updateBrandInput').value;
+
+            axios.put(`http://127.0.0.1:5000/update_car/${updateId}`, {
+                color: updateColor,
+                model: updateModel,
+                brand: updateBrand
+            })
+                .then(res => {
+                    console.log(res.data);
+                    fetchCars();
+                })
+                .catch(err => console.error(err));
+        };
+
+        const deleteCar = () => {
+            const deleteId = document.getElementById('deleteIdInput').value;
+
+            axios.delete(`http://127.0.0.1:5000/delete_car/${deleteId}`)
+                .then(res => {
+                    console.log(res.data);
+                    fetchCars();
+                })
+                .catch(err => console.error(err));
+        };
+
+        document.getElementById('submitButton').addEventListener('click', addCar);
+        document.getElementById('updateButton').addEventListener('click', updateCar);
+        document.getElementById('deleteButton').addEventListener('click', deleteCar);
+
+        // Fetch and display cars on page load
+        fetchCars();
+    </script>
+
+    <footer>
+        <p>&copy; 2024 Coral Landau. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>
